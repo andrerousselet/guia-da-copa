@@ -1,14 +1,16 @@
-import Header from "./components/Header";
+import { Routes, Route } from 'react-router-dom';
+import Guide from './pages/Guide';
 import './App.css';
+import Criteria from './pages/Criteria';
+import Ratings from './pages/Ratings';
 
 function App() {
-
   return (
-    <>
-      <Header />
-      <main className="main-content">
-      </main>
-    </>
+    <Routes>
+      <Route path="/" element={<Guide />} />
+      <Route path="/ratings" element={<Ratings />} />
+      <Route path="/criteria" element={<Criteria />} />
+    </Routes>
   );
 }
 
