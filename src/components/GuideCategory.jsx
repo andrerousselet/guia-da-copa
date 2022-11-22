@@ -1,5 +1,5 @@
-import './GuideCategory.css';
 import TeamIcon from './TeamIcon';
+import '../styles/GuideCategory.css';
 
 export default function GuideCategory({ title, src }) {
   return (

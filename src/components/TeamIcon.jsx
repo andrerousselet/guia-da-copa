@@ -1,5 +1,5 @@
 import flags from '../utils/flags';
-import './GuideCategory.css';
+import '../styles/GuideCategory.css';
 
 export default function TeamIcon() {
   return (

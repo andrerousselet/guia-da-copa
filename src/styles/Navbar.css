@@ -1,6 +1,12 @@
 .nav-menu {
   display: flex;
   align-items: center;
+  justify-content: center;
   justify-content: space-evenly;
   height: 50px;
+}
+
+.nav-options {
+  width: 33%;
+  text-align: center;
 }

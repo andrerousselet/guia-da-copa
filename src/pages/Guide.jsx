@@ -1,6 +1,6 @@
 import GuideCategory from '../components/GuideCategory';
 import Header from '../components/Header';
-import './Guide.css';
+import '../styles/Guide.css';
 
 const categories = [
   { title: "Candidato ao Título", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealWinner.svg" },
