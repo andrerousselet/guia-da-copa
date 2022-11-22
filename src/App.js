@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
 import Guide from './pages/Guide';
-import './App.css';
 import Criteria from './pages/Criteria';
 import Ratings from './pages/Ratings';
 
