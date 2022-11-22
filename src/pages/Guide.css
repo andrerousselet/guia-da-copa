@@ -1,0 +1,21 @@
+.main-content {
+  width: 90%;
+  margin: 35px auto;
+}
+
+.category-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.category-option {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 2px solid #8d1b3d;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
