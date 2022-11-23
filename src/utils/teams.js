@@ -1,4 +1,4 @@
-const flags = {
+const teams = {
   ALE: {
     name: 'ALE',
     url: "https://s.sde.globo.com/media/organizations/2019/09/03/Alemanha.svg"
@@ -129,4 +129,4 @@ const flags = {
   },
 }
 
-export default flags;
+export default teams;
