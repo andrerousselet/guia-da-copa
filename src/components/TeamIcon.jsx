@@ -1,4 +1,4 @@
-import '../styles/GuideCategory.css';
+import '../styles/guideCategory.css';
 
 export default function TeamIcon({ name, flag }) {
   return (
