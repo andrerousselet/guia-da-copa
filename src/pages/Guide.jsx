@@ -1,15 +1,18 @@
 import GuideCategory from '../components/GuideCategory';
 import Header from '../components/Header';
+import useLocalStorage from '../hooks/useLocalStorage';
 import '../styles/Guide.css';
 
 const categories = [
-  { title: "Candidato ao Título", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealWinner.svg" },
-  { title: "Pode Surpreender", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealSurprise.svg" },
-  { title: "Corre por Fora", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealCorrePorForaV2.png" },
-  { title: "Vai a Passeio", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealVaiAPasseio.png" }
+  { id: "favorite", title: "Candidato ao Título", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealWinner.svg" },
+  { id: "contender", title: "Pode Surpreender", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealSurprise.svg" },
+  { id: "outsider", title: "Corre por Fora", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealCorrePorForaV2.png" },
+  { id: "tourist", title: "Vai a Passeio", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealVaiAPasseio.png" }
 ]
 
 export default function Guide() {
+  const [rankedTeams, setRankedTeams] = useLocalStorage('ranking', []);
+
   return (
     <>
       <Header />
@@ -17,10 +20,16 @@ export default function Guide() {
         <section className='category-options'>
           {categories.map((category) => (
             <div
-              key={category.title}
+              key={category.id}
               className="category-option"
             >
-              <GuideCategory title={category.title} src={category.src} />
+              <GuideCategory
+                categoryId={category.id}
+                title={category.title}
+                src={category.src}
+                rankedTeams={rankedTeams}
+                setRankedTeams={setRankedTeams}
+              />
             </div>
           ))}
         </section>
