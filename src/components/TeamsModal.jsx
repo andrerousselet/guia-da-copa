@@ -27,7 +27,7 @@ export default function TeamsModal({ open, onClose, category }) {
           </span>
           <ConfirmBtn selection={selection} onClose={onClose} />
         </section>
-        <section className='teams-modal-selected'>
+        <section className='teams-modal-selection'>
           {selection.map(({ team }) => (
             <div key={team.name}>
               <TeamIcon name={team.name} flag={team.flag} />
