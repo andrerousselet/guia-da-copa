@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import GuideCategory from '../components/GuideCategory';
 import Header from '../components/Header';
+import TeamsModal from '../components/TeamsModal';
 import useLocalStorage from '../hooks/useLocalStorage';
-import '../styles/Guide.css';
+import '../styles/guide.css';
 
 const categories = [
   { id: "favorite", title: "Candidato ao Título", src: "https://s3.glbimg.com/v1/AUTH_08fb001c60b847468664307c11fa9dc9/public/2022/guia/sealWinner.svg" },
@@ -12,12 +14,14 @@ const categories = [
 
 export default function Guide() {
   const [rankedTeams, setRankedTeams] = useLocalStorage('ranking', []);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <Header />
       <main className='main-content'>
         <section className='category-options'>
+          <TeamsModal open={isOpen} onClose={() => setIsOpen(false)} />
           {categories.map((category) => (
             <div
               key={category.id}
@@ -29,6 +33,7 @@ export default function Guide() {
                 src={category.src}
                 rankedTeams={rankedTeams}
                 setRankedTeams={setRankedTeams}
+                setIsOpen={setIsOpen}
               />
             </div>
           ))}
