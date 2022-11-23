@@ -1,7 +1,20 @@
-import TeamIcon from './TeamIcon';
+import { useState } from 'react';
+import TeamIcon from '../components/TeamIcon';
+import teams from '../utils/teams';
 import '../styles/GuideCategory.css';
 
-export default function GuideCategory({ title, src }) {
+export default function GuideCategory({ categoryId, title, src, rankedTeams, setRankedTeams }) {
+  const [selectedTeams, setSelectedTeams] = useState(
+    rankedTeams
+      .filter((rankedTeam) => rankedTeam.categoryId === categoryId)
+      .map((rankedTeam) => rankedTeam.team)
+  );
+
+  const rankTeam = () => {
+    setRankedTeams([...rankedTeams, { categoryId, team: teams.BRA }]);
+    setSelectedTeams([...selectedTeams, teams.BRA])
+  }
+
   return (
     <div>
       <div className='category-top-section'>
@@ -18,11 +31,15 @@ export default function GuideCategory({ title, src }) {
       <div className='category-bottom-section'>
         <div
           className='team-icon add-btn'
-          onClick={() => console.log('clicked')}
+          onClick={rankTeam}
         >
           +
         </div>
-        <TeamIcon />
+        {selectedTeams?.map((team) => (
+          <div key={team.name}>
+            <TeamIcon name={team.name} flag={team.url} />
+          </div>
+        ))}
       </div>
     </div>
   )
