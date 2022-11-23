@@ -1,32 +1,33 @@
-import { useState } from 'react';
-import TeamIcon from '../components/TeamIcon';
-import teams from '../utils/teams';
+import { useContext, useState } from 'react';
+import TeamsContext from '../context/TeamsContext';
+import TeamsModal from './TeamsModal';
 import '../styles/guideCategory.css';
+import TeamIcon from './TeamIcon';
 
-export default function GuideCategory({ categoryId, title, src, rankedTeams, setRankedTeams, setIsOpen }) {
-  const [selectedTeams, setSelectedTeams] = useState(
-    rankedTeams
-      .filter((rankedTeam) => rankedTeam.categoryId === categoryId)
-      .map((rankedTeam) => rankedTeam.team)
-  );
+export default function GuideCategory({ category }) {
+  const { rankedTeams } = useContext(TeamsContext);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const rankTeam = () => {
-    setRankedTeams([...rankedTeams, { categoryId, team: teams.BRA }]);
-    setSelectedTeams([...selectedTeams, teams.BRA]);
-  };
+  const rankByCategory = rankedTeams
+    && rankedTeams.filter((rankedTeam) => rankedTeam.category === category.id)
 
   return (
-    <div>
+    <>
+      <TeamsModal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        category={category}
+      />
       <div className='category-top-section'>
         <span>
           <img
-            src={src}
+            src={category.src}
             alt="emoji-img"
             height="25px"
             width="25px"
           />
         </span>
-        <span>{title}</span>
+        <span>{category.title}</span>
       </div>
       <div className='category-bottom-section'>
         <div
@@ -35,12 +36,12 @@ export default function GuideCategory({ categoryId, title, src, rankedTeams, set
         >
           +
         </div>
-        {selectedTeams?.map((team) => (
+        {rankByCategory.map(({ team }) => (
           <div key={team.name}>
-            <TeamIcon name={team.name} flag={team.url} />
+            <TeamIcon name={team.name} flag={team.flag} />
           </div>
         ))}
       </div>
-    </div>
+    </>
   )
 };
