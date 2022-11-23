@@ -5,9 +5,7 @@ export default function Header() {
   return (
     <header>
       <div className='main-header'>
-        <div className='titles'>
-          <h1>Guia da Copa do Mundo 2022</h1>
-        </div>
+        <h1 className='header-title'>Guia da Copa do Mundo 2022</h1>
         <img
           className="header-trophy"
           src="https://i.ibb.co/GMqX7DD/world-cup.png"
