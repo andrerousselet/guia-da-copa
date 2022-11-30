@@ -50,6 +50,8 @@
   background: #8d1b3d;
   color: white;
   border: none;
+  display: flex;
+  gap: 10px;
 }
 
 .share-btn:hover {
