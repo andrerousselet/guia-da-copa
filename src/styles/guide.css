@@ -19,3 +19,39 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+.guide-btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50px;
+  margin-top: 25px;
+}
+
+.guide-btns button {
+  margin: 10px;
+  padding: 16px;
+  width: 45%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 200ms;
+}
+
+.reset-btn {
+  background: whitesmoke;
+  color: #8d1b3ddc;
+  border: 1px solid #8d1b3d;
+}
+
+.share-btn {
+  background: #8d1b3d;
+  color: white;
+  border: none;
+}
+
+.share-btn:hover {
+  opacity: 0.95;
+}
