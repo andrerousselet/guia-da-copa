@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import TeamsContext from "../context/TeamsContext";
 
-export default function ConfirmBtn({ selection, onClose }) {
-  const { rankedTeams, setRankedTeams } = useContext(TeamsContext);
+export default function ConfirmBtn({ onClose }) {
+  const { setRankedTeams, currentSelection } = useContext(TeamsContext);
 
   const confirmSelection = () => {
-    setRankedTeams([...rankedTeams, ...selection]);
+    setRankedTeams(currentSelection);
     onClose();
   };
 
