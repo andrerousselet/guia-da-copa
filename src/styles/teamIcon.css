@@ -1,37 +1,27 @@
 .team-icon {
-  border: 1px solid #8d1b3d;
-  border-radius: 3px;
-  display: flex;
   align-items: center;
-  flex-direction: column;
-  width: 35px;
-  height: 50px;
-  color: #8d1b3d;
-}
-
-.team-icon.add-btn {
-  justify-content: center;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.team-icon.chosen-team {
   border: none;
   border-radius: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: center;
+  width: 35px;
 }
 
-.team-icon.chosen-team img {
+.team-icon img {
   width: 35px;
   height: 50px;
   object-fit: cover;
 }
 
-.team-icon.chosen-team p {
+.country-name {
   font-size: 85%;
   color: rgb(70, 70, 70);
 }
 
-.chosen-team:hover {
-  cursor: pointer;
+.chosen {
+  opacity: 0.3;
 }

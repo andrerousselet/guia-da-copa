@@ -31,7 +31,7 @@ export default function GuideCategory({ category }) {
       </div>
       <div className='category-bottom-section'>
         <div
-          className='team-icon add-btn'
+          className='add-team-btn'
           onClick={() => setIsOpen(true)}
         >
           +
