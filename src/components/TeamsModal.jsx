@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import teams from '../utils/teams';
 import TeamIcon from './TeamIcon';
@@ -9,8 +9,11 @@ import Overlay from './Overlay';
 import '../styles/teamsModal.css';
 
 export default function TeamsModal({ open, onClose, category }) {
-  const { rankedTeams } = useContext(TeamsContext);
-  const [selection, setSelection] = useState(rankedTeams);
+  const { currentSelection } = useContext(TeamsContext);
+
+  const checkIfSelected = (name) => {
+    return currentSelection.some(({ team }) => team.name === name)
+  };
 
   return open && ReactDOM.createPortal(
     <>
@@ -25,14 +28,21 @@ export default function TeamsModal({ open, onClose, category }) {
             {' '}
             <strong>{category.title}</strong>
           </span>
-          <ConfirmBtn selection={selection} onClose={onClose} />
+          <ConfirmBtn onClose={onClose} />
         </section>
         <section className='teams-modal-selection'>
-          {selection.map(({ team }) => (
-            <div key={team.name}>
-              <TeamIcon name={team.name} flag={team.flag} />
-            </div>
-          ))}
+          {currentSelection
+            .filter((currentTeam) => currentTeam.category === category.type)
+            .map(({ team }) => (
+              <div key={team.name}>
+                <TeamIcon
+                  name={team.name}
+                  flag={team.flag}
+                  ableToRemove
+                  isSelected={checkIfSelected(team.name)}
+                />
+              </div>
+            ))}
         </section>
         <section className="teams-modal-bottom">
           {teams.map((team) => (
@@ -40,9 +50,8 @@ export default function TeamsModal({ open, onClose, category }) {
               <TeamIcon
                 name={team.name}
                 flag={team.flag}
-                category={category.id}
-                selection={selection}
-                setSelection={setSelection}
+                category={category.type}
+                isSelected={checkIfSelected(team.name)}
               />
             </div>
           ))}
