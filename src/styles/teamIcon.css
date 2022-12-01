@@ -22,6 +22,10 @@
   color: rgb(70, 70, 70);
 }
 
-.chosen {
+.team-icon.chosen {
   opacity: 0.3;
+}
+
+.team-icon.ranked {
+  opacity: 1;
 }

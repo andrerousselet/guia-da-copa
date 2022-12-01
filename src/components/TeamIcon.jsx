@@ -3,22 +3,29 @@ import TeamsContext from '../context/TeamsContext';
 import '../styles/guideCategory.css';
 import '../styles/teamIcon.css';
 
-export default function TeamIcon({ name, flag, category, ableToRemove, isSelected }) {
+export default function TeamIcon({ name, flag, category, ableToRemove, isSelected, isRanked }) {
   const { currentSelection, setCurrentSelection } = useContext(TeamsContext);
 
   const select = () => {
-    !isSelected && setCurrentSelection([...currentSelection, { category, team: { name, flag } }]);
+    if (!isSelected) {
+      setCurrentSelection([...currentSelection, { category, team: { name, flag } }]);
+    };
+    return null;
   };
 
   const remove = () => {
-    isSelected && setCurrentSelection(currentSelection.filter(({ team }) => team.name !== name));
+    if (isSelected) {
+      setCurrentSelection(currentSelection.filter(({ team }) => team.name !== name));
+    };
+    return null;
   };
 
   const chosen = isSelected && !ableToRemove ? 'chosen' : null;
+  const ranked = isRanked ? 'ranked' : null;
 
   return (
     <div
-      className={`team-icon ${chosen}`}
+      className={`team-icon ${chosen} ${ranked}`}
       onClick={ableToRemove ? remove : select}
     >
       <img src={flag} alt={`${name}-flag`} />

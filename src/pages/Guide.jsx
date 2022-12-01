@@ -12,7 +12,13 @@ const categories = [
 ]
 
 export default function Guide() {
-  const { setRankedTeams } = useContext(TeamsContext);
+  const { setRankedTeams, setCurrentSelection } = useContext(TeamsContext);
+
+  const reset = () => {
+    setCurrentSelection([])
+    setRankedTeams([]);
+  }
+
   return (
     <>
       <Header />
@@ -31,7 +37,7 @@ export default function Guide() {
           <div className="guide-btns">
             <button
               className="reset-btn"
-              onClick={() => setRankedTeams([])}
+              onClick={reset}
             >
               RESETAR
             </button>

@@ -8,8 +8,7 @@ export default function GuideCategory({ category }) {
   const { rankedTeams } = useContext(TeamsContext);
   const [isOpen, setIsOpen] = useState(false);
 
-  const rankByCategory = rankedTeams
-    && rankedTeams.filter((rankedTeam) => rankedTeam.category === category.id)
+  const rankByCategory = rankedTeams.filter((rankedTeam) => rankedTeam.category === category.type);
 
   return (
     <>
@@ -38,7 +37,7 @@ export default function GuideCategory({ category }) {
         </div>
         {rankByCategory.map(({ team }) => (
           <div key={team.name}>
-            <TeamIcon name={team.name} flag={team.flag} />
+            <TeamIcon name={team.name} flag={team.flag} isSelected isRanked />
           </div>
         ))}
       </div>
